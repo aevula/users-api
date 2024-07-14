@@ -8,6 +8,8 @@ gem 'rails'
 
 gem 'pg'
 
+gem 'grape'
+
 gem 'puma'
 
 gem 'bootsnap', require: false
@@ -16,4 +18,5 @@ gem 'rack-cors'
 
 group :development, :test do
   gem 'debug'
+  gem 'byebug'
 end

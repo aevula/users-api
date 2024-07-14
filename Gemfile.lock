@@ -80,6 +80,7 @@ GEM
     bootsnap (1.18.3)
       msgpack (~> 1.2)
     builder (3.3.0)
+    byebug (11.1.3)
     concurrent-ruby (1.3.3)
     connection_pool (2.4.1)
     crass (1.0.6)
@@ -88,9 +89,30 @@ GEM
       irb (~> 1.10)
       reline (>= 0.3.8)
     drb (2.2.1)
+    dry-core (1.0.1)
+      concurrent-ruby (~> 1.0)
+      zeitwerk (~> 2.6)
+    dry-inflector (1.1.0)
+    dry-logic (1.5.0)
+      concurrent-ruby (~> 1.0)
+      dry-core (~> 1.0, < 2)
+      zeitwerk (~> 2.6)
+    dry-types (1.7.2)
+      bigdecimal (~> 3.0)
+      concurrent-ruby (~> 1.0)
+      dry-core (~> 1.0)
+      dry-inflector (~> 1.0)
+      dry-logic (~> 1.4)
+      zeitwerk (~> 2.6)
     erubi (1.13.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    grape (2.1.3)
+      activesupport (>= 6)
+      dry-types (>= 1.1)
+      mustermann-grape (~> 1.1.0)
+      rack (>= 2)
+      zeitwerk
     i18n (1.14.5)
       concurrent-ruby (~> 1.0)
     io-console (0.7.2)
@@ -110,6 +132,10 @@ GEM
     mini_portile2 (2.8.7)
     minitest (5.24.1)
     msgpack (1.7.2)
+    mustermann (3.0.0)
+      ruby2_keywords (~> 0.0.1)
+    mustermann-grape (1.1.0)
+      mustermann (>= 1.0.0)
     mutex_m (0.2.0)
     net-imap (0.4.14)
       date
@@ -176,6 +202,7 @@ GEM
       psych (>= 4.0.0)
     reline (0.5.9)
       io-console (~> 0.5)
+    ruby2_keywords (0.0.5)
     stringio (3.1.1)
     thor (1.3.1)
     timeout (0.4.1)
@@ -193,7 +220,9 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap
+  byebug
   debug
+  grape
   pg
   puma
   rack-cors
