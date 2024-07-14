@@ -1,0 +1,17 @@
+services:
+  app:
+    image: dedski-users-api:latest
+    build:
+      context: ./
+      args:
+        USER_GRUP: ${USER_GRUP}
+        USER_NAME: ${USER_NAME}
+        USER_PASW: ${USER_PASW}
+
+networks:
+  default:
+    name: dedski
+    ipam:
+      driver: default
+      config:
+        - subnet: "69.0.0.0/24"
