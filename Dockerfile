@@ -1,7 +1,6 @@
 FROM ruby:3.3.4-alpine3.20 AS base
 
-RUN apk update
-RUN apk add sudo
+RUN apk --no-cache add sudo build-base tzdata
 
 WORKDIR /opt/app/
 
@@ -16,8 +15,15 @@ RUN adduser -S ${USER_NAME} -G ${USER_GRUP} -u ${ROOTS_UID}
 RUN echo "${USER_NAME}:${USER_PASW}" | chpasswd
 RUN echo "${USER_NAME} ALL=(ALL) ALL" >> /etc/sudoers
 
+COPY Gemfile* ./
+
+RUN chown -R ${USER_NAME} ./
+RUN chmod 755 Gemfile.lock
+
 USER ${USER_NAME}
+
+RUN bundle install -j 4
 
 COPY ./ ./
 
-CMD [ "irb" ]
+CMD puma --control-url tcp://0.0.0.0:9294 --control-token ${USER_PASW}
