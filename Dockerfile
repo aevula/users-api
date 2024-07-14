@@ -1,6 +1,6 @@
 FROM ruby:3.3.4-alpine3.20 AS base
 
-RUN apk --no-cache add sudo build-base tzdata
+RUN apk --no-cache add sudo build-base tzdata postgresql-dev
 
 WORKDIR /opt/app/
 
@@ -26,4 +26,4 @@ RUN bundle install -j 4
 
 COPY ./ ./
 
-CMD puma --control-url tcp://0.0.0.0:9294 --control-token ${USER_PASW}
+CMD puma --control-url tcp://0.0.0.0:6969 --control-token ${USER_PASW}
