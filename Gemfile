@@ -19,6 +19,9 @@ gem 'rack-cors'
 group :development, :test do
   gem 'byebug'
   gem 'debug'
+
+  gem 'rspec'
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -28,4 +31,9 @@ group :development do
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
+  gem 'rubocop-rspec_rails', require: false
+end
+
+group :test do
+  gem 'rspec_junit_formatter', require: false
 end

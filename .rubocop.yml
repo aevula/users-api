@@ -2,6 +2,7 @@ require:
   - rubocop-performance
   - rubocop-rails
   - rubocop-rspec
+  - rubocop-rspec_rails
 
 AllCops:
   TargetRubyVersion: 3.3.4
@@ -30,11 +31,17 @@ Style/RequireOrder:
 Style/MissingElse:
   Enabled: false
 
+Style/MethodCallWithArgsParentheses:
+  AllowedMethods:
+    - to
+
 ### Lint ###
+
 Lint/ConstantResolution:
   Ignore:
     - ENV
     - Bundler
+    - Kernel
     - Rails
     - ActionCable
     - ActionMailer
@@ -42,3 +49,5 @@ Lint/ConstantResolution:
     - ActiveRecord
     - ActiveSupport
     - Grape
+    - RSpec
+    - SimpleCov

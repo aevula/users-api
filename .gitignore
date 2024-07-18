@@ -34,3 +34,6 @@
 
 # Ignore histories
 /.byebug_history
+
+# Ignore test artifacts
+/examples.txt
