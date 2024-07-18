@@ -37,3 +37,4 @@
 
 # Ignore test artifacts
 /examples.txt
+/coverage/*
