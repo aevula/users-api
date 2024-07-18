@@ -18,6 +18,9 @@ Bundler/GemVersion:
 
 ### Style ###
 
+Style/Copyright:
+  Enabled: false # TODO: enable (Dedski-16)
+
 Style/Documentation:
   Enabled: false
 
