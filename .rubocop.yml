@@ -21,6 +21,12 @@ Bundler/GemVersion:
 Style/Documentation:
   Enabled: false
 
+Style/RequireOrder:
+  Enabled: false
+
+Style/MissingElse:
+  Enabled: false
+
 ### Lint ###
 Lint/ConstantResolution:
   Ignore: ['Rails', 'ENV']
