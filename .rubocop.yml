@@ -20,3 +20,7 @@ Bundler/GemVersion:
 
 Style/Documentation:
   Enabled: false
+
+### Lint ###
+Lint/ConstantResolution:
+  Ignore: ['Rails', 'ENV']

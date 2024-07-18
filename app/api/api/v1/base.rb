@@ -2,7 +2,7 @@
 
 module API
   module V1
-    class Base < API::Base
+    class Base < ::API::Base
       version 'v1', using: :path
       format :json
 
