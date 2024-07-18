@@ -1,0 +1,75 @@
+name: test
+
+on:
+  pull_request:
+    branches:
+      - "*"
+    types: [opened, synchronize, reopened]
+  push:
+    branches:
+      - master
+
+env:
+  RAILS_ENV: "test"
+  COVERAGE: "true"
+  DATABASE_URL: "postgres://postgres@localhost:5432"
+  DATABASE_USER: "postgres"
+  DATABASE_PASW: "password"
+
+jobs:
+  lint:
+    name: RuboCop
+    timeout-minutes: 1
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.3.4
+          bundler-cache: true
+
+      - name: Run RuboCop
+        run: bundle exec rubocop
+
+  test:
+    name: Rspec
+    timeout-minutes: 1
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_USER: "postgres"
+          POSTGRES_PASSWORD: "password"
+        ports:
+          - 5432:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.3.4
+          bundler-cache: true
+
+      - name: Prepare DB
+        run: RAILS_ENV=test bundle exec rails db:prepare
+
+      - name: Run tests
+        run: bundle exec rspec --format progress --format RspecJunitFormatter --out coverage/coverage.xml
+
+      # TODO: fix later
+      # - name: Produce the coverage report
+      #   uses: insightsengineering/coverage-action@v2
+      #   with:
+      #     path: coverage/coverage.xml
+      #     threshold: 30
+      #     fail: true
+      #     publish: true
+      #     diff: true
+      #     diff-branch: master
+      #     diff-storage: _xml_coverage_reports
+      #     coverage-summary-title: "Code Coverage Summary"
