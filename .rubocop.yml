@@ -1,0 +1,53 @@
+require:
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rspec
+  - rubocop-rspec_rails
+
+AllCops:
+  TargetRubyVersion: 3.3.4
+  EnabledByDefault: true
+  NewCops: enable
+
+### Bundler ###
+
+Bundler/GemComment:
+  Enabled: false
+
+Bundler/GemVersion:
+  Enabled: false
+
+### Style ###
+
+Style/Copyright:
+  Enabled: false # TODO: enable (Dedski-16)
+
+Style/Documentation:
+  Enabled: false
+
+Style/RequireOrder:
+  Enabled: false
+
+Style/MissingElse:
+  Enabled: false
+
+Style/MethodCallWithArgsParentheses:
+  AllowedMethods:
+    - to
+
+### Lint ###
+
+Lint/ConstantResolution:
+  Ignore:
+    - ENV
+    - Bundler
+    - Kernel
+    - Rails
+    - ActionCable
+    - ActionMailer
+    - ActiveJob
+    - ActiveRecord
+    - ActiveSupport
+    - Grape
+    - RSpec
+    - SimpleCov
