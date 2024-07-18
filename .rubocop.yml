@@ -15,3 +15,8 @@ Bundler/GemComment:
 
 Bundler/GemVersion:
   Enabled: false
+
+### Style ###
+
+Style/Documentation:
+  Enabled: false
