@@ -32,4 +32,13 @@ Style/MissingElse:
 
 ### Lint ###
 Lint/ConstantResolution:
-  Ignore: ['Rails', 'ENV']
+  Ignore:
+    - ENV
+    - Bundler
+    - Rails
+    - ActionCable
+    - ActionMailer
+    - ActiveJob
+    - ActiveRecord
+    - ActiveSupport
+    - Grape
